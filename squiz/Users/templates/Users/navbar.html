@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<link type="text/css" href="{% static 'Users/css/main.css' %}" rel="stylesheet">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+   <a class="navbar-brand" href="{% url 'Users:home' %}">SQUIZ
+  <!--  <img src="bird.jpg" alt="Logo" style="width:40px;"> -->
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Users:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Users:leaderboard' 1 %}">Leader Board</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Users:profile_info' %}">Profile</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item navbar-text">
+                    <a class="nav-link" href = "{% url 'Users:profile_info' %}">Welcome {{ user.first_name }}</a>
+                    </li>
+                    <li class="nav-item navbar-text">
+                    <a class="nav-link" href = "{% url 'Users:logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item navbar-text">
+                    <a class="nav-link" href="{% url 'Users:signin' %}">Login</a>
+                    </li>
+                    <li class="nav-item navbar-text">
+                    <a class="nav-link" href="{% url 'Users:signup' %}">Sign up</a>
+                    </li>
+                {% endif %}
+
+
+        </ul>
+    </div>
+</nav>
