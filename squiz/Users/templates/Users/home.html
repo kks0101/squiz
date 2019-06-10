@@ -9,12 +9,12 @@
             {% if all_quiz %}
                 <div class="card border-success mb-3 mt-5 ml-5" style="max-width: 18rem;">
                     {% for quiz in all_quiz %}
-                        <div class="card-header bg-transparent border-success text-success">Quiz {{ quiz.id }}</div>
+                        <div class="card-header bg-transparent border-success text-success">Quiz {{ forloop.counter }}</div>
                         <div class="card-body text-success">
                             <h5 class="card-title">{{ quiz.quiz_title }}</h5>
                             <p class="card-text">This Quiz has {{ quiz.question_set.count }} questions.</p>
                         </div>
-                        <div class="btn btn-success"><a href="{% url 'quiz' quiz.pk 1 %}" class="card-link text-white"> Start Quiz</a></div>
+                        <div class="btn btn-success"><a href="{% url 'quiz' quiz.pk quiz.question_set.first.pk %}" class="card-link text-white"> Start Quiz</a></div>
                     {% endfor %}
                 </div>
             {% else %}
@@ -30,6 +30,77 @@
                         </div>
                     </div>
                 </div>
+            {% endif %}
+        {% elif request.user.profile.role == "Teacher" %}
+            {% if not request.user.is_staff %}
+                <div class="container">
+                    <div class="card-columns mt-5">
+                    <div class="col ml-lg-5">
+                        <div class="card text-white bg-dark text-center" style="max-width: 18rem">
+                            <div class="card-body">
+                                You are Teacher and are yet to be verified. Contact Admin.
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+                </div>
+            {% else %}
+                {% if quiz_by_teacher %}
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-3">
+                                {% for quiz in quiz_by_teacher %}
+                                    <div class="card border-success mb-3 mt-5 ml-5" style="max-width: 18rem;">
+                                    <div class="card-header bg-transparent border-success text-success">Quiz {{ forloop.counter }}</div>
+                                    <div class="card-body text-success">
+                                        <h5 class="card-title">{{ quiz.quiz_title }}</h5>
+                                        <p class="card-text">This Quiz has {{ quiz.question_set.count }} questions.</p>
+                                    </div>
+
+                                    <div class="card-footer"><a href="{% url 'add_question' request.user quiz.pk %}" class="btn btn-success">Add more questions </a> </div>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-9 mt-5">
+                                </table>
+                                    <br>
+                                    <table class="table">
+                                      <thead class="thead-dark">
+                                        <tr>
+                                          <th scope="col">#</th>
+                                          <th scope="col">Quiz</th>
+                                          <th scope="col">No of students</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                      {% for quiz in quiz_by_teacher %}
+                                        <tr>
+                                          <th scope="row">{{ forloop.counter }}</th>
+                                          <td>{{ quiz.quiz_title }}</td>
+                                          <td>{{ quiz.student.count }}</td>
+                                        </tr>
+                                      {% endfor %}
+                                      </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                {% else %}
+                    <div class="container">
+                    <div class="card-columns mt-5">
+                        <div class="col ml-lg-5">
+                            <div class="card text-white bg-dark text-center" style="margin: auto; max-width: 20rem">
+                                <div class="card-body">
+                                    There are no quiz!!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             {% endif %}
         {% endif %}
     {% else %}

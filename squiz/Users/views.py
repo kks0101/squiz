@@ -9,7 +9,11 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     if request.user.is_authenticated:
         all_quiz = Test.objects.all()
-        return render(request, 'Users/home.html', {'all_quiz': all_quiz})
+        if request.user.profile.role == "Teacher":
+            quiz_by_teacher = Test.objects.filter(teacher=request.user.profile)
+            return render(request, 'Users/home.html', {'all_quiz': all_quiz, 'quiz_by_teacher': quiz_by_teacher})
+        else:
+            return render(request, 'Users/home.html', {'all_quiz': all_quiz})
     return render(request, 'Users/home.html', {})
 
 

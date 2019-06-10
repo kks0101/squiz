@@ -1,0 +1,100 @@
+{% extends 'Users/base.html' %}
+{% load staticfiles %}
+
+{% block  title_extra %}Add Quiz-{% endblock title_extra %}
+
+{% block body_content %}
+    {% include 'Users/navbar.html' %}
+
+    {% if error_addques %}
+        <div class="container">
+                    <div class="card-columns mt-5">
+                        <div class="col ml-lg-5">
+                            <div class="card text-white bg-dark text-center" style="margin: auto; max-width: 20rem">
+                                <div class="card-body">
+                                    You must be a student to create quiz!!
+                                </div>
+                                <div class="card-footer">
+                                    <a href="{% url 'Users:home' %}" class="btn btn-success ">Home: </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    {% else %}
+
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page">{{ quiz.quiz_title }}</li>
+                                <li class="breadcrumb-item active" aria-current="page">Add Question</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="card-text">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                 <div class="md-form">
+                                    <input type="text" name="question_text" id="form1" class="form-control" required autocomplete="off">
+                                    <label for="form1">Question Text</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" name="option1" id="form2" class="form-control" required autocomplete="off">
+                                    <label for="form2">Option 1</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" name="option2" id="form3" class="form-control" required autocomplete="off">
+                                    <label for="form3">Option 2</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" name="option3" id="form4" class="form-control" required autocomplete="off">
+                                    <label for="form4">Option 3</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" name="option4" id="form5" class="form-control" required autocomplete="off">
+                                    <label for="form5">Option 4</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" name="correct_ans" id="form6" class="form-control" required autocomplete="off">
+                                    <label for="form6">Correct Answer</label>
+                                </div>
+                                <div class="text-center mb-3">
+                                    <button class="submit btn btn-indigo"> Add Quiz </button>
+                                </div>
+                            </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page">Added Questions</li>
+                            </ol>
+                        </nav>
+                            <table class="table table-striped">
+                          <tbody>
+                          {% for ques in questions %}
+                            <tr>
+                              <th scope="row">{{ forloop.counter }}</th>
+                              <td>{{ ques.question_text }}</td>
+                            </tr>
+                          {% endfor %}
+                          </tbody>
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    {% endif %}
+{% endblock body_content %}

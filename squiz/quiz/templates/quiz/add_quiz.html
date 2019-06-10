@@ -1,0 +1,58 @@
+{% extends 'Users/base.html' %}
+{% load staticfiles %}
+
+{% block  title_extra %}Add Quiz-{% endblock title_extra %}
+
+{% block body_content %}
+    {% include 'Users/navbar.html' %}
+
+    {% if error_addquiz %}
+        <div class="container">
+                    <div class="card-columns mt-5">
+                        <div class="col ml-lg-5">
+                            <div class="card text-white bg-dark text-center" style="margin: auto; max-width: 20rem">
+                                <div class="card-body">
+                                    You must be a student to create quiz!!
+                                </div>
+                                <div class="card-footer">
+                                    <a href="{% url 'Users:home' %}" class="btn btn-success ">Home: </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    {% else %}
+
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-body">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page">Add Quiz</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="card-text">
+                        {% if error_quiz_exist %}
+                            <span>A quiz with the same name exists!!</span>
+                        {% endif %}
+                            <form action="{% url 'add_quiz' request.user %}" method="post">
+                                {% csrf_token %}
+                                 <div class="md-form">
+                                    <input type="text" name="quiz_title" id="form1" class="form-control" required autocomplete="off">
+                                    <label for="form1">Quiz Title</label>
+                                </div>
+                                <div class="text-center mb-3">
+                                    <button class="submit btn btn-indigo"> Add Quiz </button>
+                                </div>
+                            </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    {% endif %}
+{% endblock body_content %}
