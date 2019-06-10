@@ -105,3 +105,18 @@ def show_quiz(request, username, pk):
         quiz = Test.objects.get(pk=pk, teacher=prfl)
         question = Question.objects.filter(quiz=quiz)
         return render(request, 'quiz/show_question.html', {'error_showques': error_showques, 'questions': question, 'all_quiz': all_quiz_by_teacher})
+
+
+def view_response(request, username, pk):
+    user = User.objects.get(username=username)
+    prfl = Profile.objects.get(user=user)
+
+    if not prfl.role == "Student":
+        error_viewresponse = True
+        return render(request, 'quiz/show_response.html', {'error_viewresponse': error_viewresponse})
+    else:
+        error_viewresponse = False
+        quiz = Test.objects.get(pk=pk, student=prfl)
+        question = Question.objects.filter(quiz=quiz)
+        return render(request, 'quiz/show_response.html',
+                      {'error_viewresponse': error_viewresponse, 'questions': question})

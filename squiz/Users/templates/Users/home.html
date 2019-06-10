@@ -16,7 +16,7 @@
                                     <h5 class="card-title">{{ quiz.quiz_title }}</h5>
                                     <p class="card-text">This Quiz has {{ quiz.question_set.count }} questions.</p>
                                 </div>
-                            <div class="btn btn-danger"><a href="#" class="card-link text-white">View Response</a></div>
+                            <div class="btn btn-danger"><a href="{% url 'response' request.user quiz.pk %}" class="card-link text-white">View Response</a></div>
 
                             </div>
                         {% else %}
