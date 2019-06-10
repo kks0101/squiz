@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Users.urls')),
     path('<username>/quiz/<int:pk>', views.show_quiz, name='show_quiz'),
+    path('result/<int:pk>', views.view_result, name='result_quiz'),
     path('<username>/response/<int:pk>', views.view_response, name='response'),
     path('<username>/add_quiz/', views.add_quiz, name="add_quiz"),
     path('<username>/add_quiz/<int:pk>/', views.add_question, name="add_question"),

@@ -87,7 +87,6 @@
                                 {% endfor %}
                             </div>
                             <div class="col-md-9 mt-5">
-                                </table>
                                     <br>
                                     <table class="table">
                                       <thead class="thead-dark">
@@ -99,9 +98,10 @@
                                       </thead>
                                       <tbody>
                                       {% for quiz in quiz_by_teacher %}
+
                                         <tr>
                                           <th scope="row">{{ forloop.counter }}</th>
-                                          <td>{{ quiz.quiz_title }}</td>
+                                          <td><a href="{% url 'result_quiz' quiz.pk %}">{{ quiz.quiz_title }}</a></td>
                                           <td>{{ quiz.student.count }}</td>
                                         </tr>
                                       {% endfor %}

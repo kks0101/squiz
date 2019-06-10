@@ -120,3 +120,14 @@ def view_response(request, username, pk):
         question = Question.objects.filter(quiz=quiz)
         return render(request, 'quiz/show_response.html',
                       {'error_viewresponse': error_viewresponse, 'questions': question})
+
+
+def view_result(request, pk):
+    quiz = Test.objects.get(pk=pk)
+    all_students = quiz.student.all()
+    dict = {}
+    for t in all_students:
+        q = Test.objects.get(pk=pk, student=t)
+        dict[t] = q.score
+
+    return render(request, 'quiz/view_result.html', {'dict': dict, 'current_quiz': quiz})
