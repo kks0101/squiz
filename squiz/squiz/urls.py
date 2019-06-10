@@ -20,6 +20,7 @@ from quiz import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Users.urls')),
+    path('<username>/quiz/<int:pk>', views.show_quiz, name='show_quiz'),
     path('<username>/add_quiz/', views.add_quiz, name="add_quiz"),
     path('<username>/add_quiz/<int:pk>/', views.add_question, name="add_question"),
     path('quiz/<int:pk>/<int:question_no>/', views.quiz_home, name="quiz"),

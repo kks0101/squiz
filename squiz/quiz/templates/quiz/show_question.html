@@ -1,0 +1,58 @@
+{% extends 'Users/base.html' %}
+{% load  staticfiles %}
+
+{% block title_extra %}{{ quiz.quiz_title }}-{% endblock title_extra %}
+
+{% block body_content %}
+    {% include 'Users/navbar.html' %}
+    <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+        <div class="card">
+            <table class="table">
+            <thead class="thead-dark">
+            <tr>
+            <th scope="col">
+            <div class="dropdown show " >
+            <a class="btn text-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Select Quiz
+                </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {% for quiz in all_quiz %}
+                <a href="{% url 'show_quiz'  request.user quiz.pk %}" class="dropdown-item">{{ quiz.quiz_title }}</a>
+                {% endfor %}
+            </div>
+            </div>
+            </th>
+            <th scope="col">
+            {{ current_quiz.quiz_title }}
+            </th>
+            </tr>
+            </thead>
+            </table>
+            <br>
+
+            {% for question in questions %}
+            <div class="card">
+              <div class="card-header">
+                Question {{ forloop.counter }}.
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ question.question_text }}</h5>
+                <br>
+                {% for option in question.options_set.all %}
+                    <h6>{{ forloop.counter }}. {{ option.option_text }}
+                    {% if option.is_correct %}
+                    <span class="badge badge-success">Correct</span>
+                    {% endif %}
+                    </h6>
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+    </div>
+{% endblock body_content %}

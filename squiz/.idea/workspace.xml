@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="078655dd-d6b4-4942-a119-f4d320c9dcf3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/quiz/templates/quiz/add_question.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quiz/templates/quiz/add_quiz.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quiz/templates/quiz/show_question.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Users/templates/Users/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Users/templates/Users/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/templates/Users/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/Users/templates/Users/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Users/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/squiz/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/squiz/urls.py" afterDir="false" />
     </list>
@@ -25,19 +21,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Users/templates/Users/navbar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="27" column="86" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="86" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/squiz/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+            <state relative-caret-position="396">
+              <caret line="22" column="65" lean-forward="true" selection-start-line="22" selection-start-column="65" selection-end-line="22" selection-end-column="65" />
               <folding>
                 <element signature="e#629#661#0" expanded="true" />
               </folding>
@@ -45,14 +32,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quiz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-648">
-              <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
+            <state relative-caret-position="726">
+              <caret line="106" column="147" selection-start-line="106" selection-start-column="147" selection-end-line="106" selection-end-column="147" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quiz/templates/quiz/show_question.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -102,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Users/templates/Users/leaderboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="51" column="20" lean-forward="true" selection-start-line="32" selection-start-column="12" selection-end-line="51" selection-end-column="20" />
+            <state relative-caret-position="468">
+              <caret line="41" column="22" lean-forward="true" selection-end-line="57" />
             </state>
           </provider>
         </entry>
@@ -112,16 +108,16 @@
         <entry file="file://$PROJECT_DIR$/quiz/templates/quiz/quiz.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="30" selection-end-column="14" />
+              <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="30" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Users/templates/Users/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="73" column="45" lean-forward="true" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
+            <state relative-caret-position="-48">
+              <caret line="63" column="59" selection-start-line="63" selection-start-column="59" selection-end-line="63" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -167,12 +163,14 @@
         <option value="$PROJECT_DIR$/quiz/templates/quiz/add_quiz.html" />
         <option value="$PROJECT_DIR$/quiz/templates/quiz/add_question.html" />
         <option value="$PROJECT_DIR$/squiz/urls.py" />
-        <option value="$PROJECT_DIR$/quiz/views.py" />
         <option value="$PROJECT_DIR$/Users/templates/Users/home.html" />
+        <option value="$PROJECT_DIR$/quiz/templates/quiz/show_question.html" />
+        <option value="$PROJECT_DIR$/quiz/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="960" />
     <option name="y" value="25" />
     <option name="width" value="960" />
     <option name="height" value="998" />
@@ -338,7 +336,7 @@
       <workItem from="1560103006411" duration="18636000" />
       <workItem from="1560163740322" duration="3008000" />
       <workItem from="1560171151596" duration="512000" />
-      <workItem from="1560172061027" duration="12928000" />
+      <workItem from="1560172061027" duration="15364000" />
     </task>
     <task id="LOCAL-00001" summary="Login, Signup, Home page included">
       <created>1560110689159</created>
@@ -375,17 +373,24 @@
       <option name="project" value="LOCAL" />
       <updated>1560171400640</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Teacher interface to add quiz.&#10;Modified UI of Teacher interface.">
+      <created>1560190398747</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1560190398747</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43487000" />
+    <option name="totallyTimeSpent" value="45923000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="998" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18803419" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18803419" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -439,7 +444,8 @@
     <MESSAGE value="Student Quiz Portal--updated" />
     <MESSAGE value="Added profile page and fixed some other issues" />
     <MESSAGE value="fixed signup issue." />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed signup issue." />
+    <MESSAGE value="Added Teacher interface to add quiz.&#10;Modified UI of Teacher interface." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Teacher interface to add quiz.&#10;Modified UI of Teacher interface." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Users/static/Users/css/bootstrap.css">
@@ -591,13 +597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz/templates/quiz/quiz.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="30" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/quiz/templates/quiz/add_question.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="492">
@@ -608,37 +607,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Users/templates/Users/leaderboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="41" column="22" lean-forward="true" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/squiz/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        <state relative-caret-position="396">
+          <caret line="22" column="65" lean-forward="true" selection-start-line="22" selection-start-column="65" selection-end-line="22" selection-end-column="65" />
           <folding>
             <element signature="e#629#661#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz/views.py">
+    <entry file="file://$PROJECT_DIR$/quiz/templates/quiz/quiz.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Users/templates/Users/leaderboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="51" column="20" lean-forward="true" selection-start-line="32" selection-start-column="12" selection-end-line="51" selection-end-column="20" />
+        <state relative-caret-position="180">
+          <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="30" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Users/templates/Users/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="73" column="45" lean-forward="true" selection-start-line="73" selection-start-column="45" selection-end-line="73" selection-end-column="45" />
+        <state relative-caret-position="-48">
+          <caret line="63" column="59" selection-start-line="63" selection-start-column="59" selection-end-line="63" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz/templates/quiz/show_question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="106" column="147" selection-start-line="106" selection-start-column="147" selection-end-line="106" selection-end-column="147" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

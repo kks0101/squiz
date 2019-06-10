@@ -90,3 +90,18 @@ def add_question(request, username, pk):
 
         else:
             return render(request, 'quiz/add_question.html', {'error_addques': error_addques, 'questions': question, 'quiz': quiz})
+
+
+def show_quiz(request, username, pk):
+    user = User.objects.get(username=username)
+    prfl = Profile.objects.get(user=user)
+
+    if not prfl.role == "Teacher":
+        error_showques = True
+        return render(request, 'quiz/show_question.html', {'error_showques': error_showques})
+    else:
+        error_showques = False
+        all_quiz_by_teacher = Test.objects.filter(teacher=prfl)
+        quiz = Test.objects.get(pk=pk, teacher=prfl)
+        question = Question.objects.filter(quiz=quiz)
+        return render(request, 'quiz/show_question.html', {'error_showques': error_showques, 'questions': question, 'all_quiz': all_quiz_by_teacher})

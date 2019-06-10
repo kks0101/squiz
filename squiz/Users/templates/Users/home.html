@@ -56,8 +56,16 @@
                                         <h5 class="card-title">{{ quiz.quiz_title }}</h5>
                                         <p class="card-text">This Quiz has {{ quiz.question_set.count }} questions.</p>
                                     </div>
-
-                                    <div class="card-footer"><a href="{% url 'add_question' request.user quiz.pk %}" class="btn btn-success">Add more questions </a> </div>
+                                    <div class="card-footer">
+                                        <div class="row">
+                                            <div class="col">
+                                        <a href="{% url 'add_question' request.user quiz.pk %}" class="btn btn-success">Add more questions </a>
+                                                </div>
+                                            <div class="col">
+                                                <a href="{% url 'show_quiz' request.user quiz.pk %}" class="btn btn-danger">View</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                     </div>
 
                                 {% endfor %}
