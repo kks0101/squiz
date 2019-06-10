@@ -1,0 +1,47 @@
+{% extends 'Users/base.html' %}
+{% load staticfiles%}
+
+{% block title_extra %}Quiz -{% endblock title_extra %}
+
+{% block body_content %}
+    {% include 'Users/navbar.html' %}
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-10 mt-5">
+        <div class="card">
+          <div class="card-header">
+            Question {{ question.id }}.
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ question.question_text }}</h5>
+            <form action="" method="post">
+            {% csrf_token %}
+                {% for option in question.options_set.all %}
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="option" id="opt1" value="{{ option.option_text }}">
+                  <label class="form-check-label" for="opt1">
+                    {{ option.option_text }}
+                  </label>
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+
+          </div>
+        </div>
+        </div>
+        <div class="col-md-2 mt-5">
+            <div class="card">
+                <div class="card-header">
+                    {{ question.quiz.quiz_title }}
+                </div>
+                <div class="card-body">
+                <div class="card-title">
+                    This Quiz is conducted by {{ question.quiz.teacher.user.first_name}} {{ question.quiz.teacher.user.last_name}}.
+                </div>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock body_content %}

@@ -1,0 +1,23 @@
+{% extends 'Users/base.html' %}
+{% load staticfiles %}
+
+{% block title_extra %}Quiz -{% endblock title_extra %}
+
+{% block body_content %}
+    {% include 'Users/navbar.html' %}
+    <div class="container">
+        <div class="col-lg-offset-4">
+            <div class="card">
+                <div class="card-header">Thank you!!</div>
+                <div class="card-body">
+                    <div class="card-title">
+                        Your score - {{ score }}
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'Users:logout'%}" class="btn btn-success">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body_content %}

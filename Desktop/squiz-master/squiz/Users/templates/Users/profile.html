@@ -1,0 +1,71 @@
+{% extends 'Users/base.html'%}
+{% load staticfiles %}
+{% block title_extra %}Profile -{% endblock title_extra%}
+
+{% block body_content %}
+    {% include 'Users/navbar.html' %}
+    <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+        <div class="card">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Quiz</th>
+                  <th scope="col">Teacher</th>
+                  <th scope="col">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for quiz in all_quiz %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ quiz.quiz_title }}</td>
+                  <td>{{ quiz.teacher.user.first_name }}</td>
+                  <td>{{ quiz.score.score }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+        </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Personal Info
+                </div>
+                <img class="card-img-top" src="{% static 'Users/images/profile.png' %}" alt="Card image cap">
+                <div class="card-body">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Username</th>
+                          <td>{{ request.user.username }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Name</th>
+                          <td>{{ request.user.first_name }} {{ request.user.last_name }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Role</th>
+                          <td>{{ request.user.profile.role }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Department</th>
+                          <td>{{ request.user.profile.department }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock body_content %}
