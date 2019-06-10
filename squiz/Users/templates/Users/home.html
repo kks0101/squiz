@@ -7,16 +7,32 @@
     {% if request.user.is_authenticated %}
         {% if request.user.profile.role == "Student" %}
             {% if all_quiz %}
+                {% for quiz in all_quiz %}
+                        {% if quiz in request.user.profile.student.all %}
+                            <div class="card border-danger mb-3 mt-5 ml-5" style="max-width: 18rem;">
+
+                                <div class="card-header bg-transparent border-danger text-danger">Quiz {{ forloop.counter }}</div>
+                                <div class="card-body text-danger">
+                                    <h5 class="card-title">{{ quiz.quiz_title }}</h5>
+                                    <p class="card-text">This Quiz has {{ quiz.question_set.count }} questions.</p>
+                                </div>
+                            <div class="btn btn-danger"><a href="#" class="card-link text-white">View Response</a></div>
+
+                            </div>
+                        {% else %}
+
                 <div class="card border-success mb-3 mt-5 ml-5" style="max-width: 18rem;">
-                    {% for quiz in all_quiz %}
+
                         <div class="card-header bg-transparent border-success text-success">Quiz {{ forloop.counter }}</div>
                         <div class="card-body text-success">
                             <h5 class="card-title">{{ quiz.quiz_title }}</h5>
                             <p class="card-text">This Quiz has {{ quiz.question_set.count }} questions.</p>
                         </div>
                         <div class="btn btn-success"><a href="{% url 'quiz' quiz.pk quiz.question_set.first.pk %}" class="card-link text-white"> Start Quiz</a></div>
-                    {% endfor %}
+
                 </div>
+                    {% endif %}
+                {% endfor %}
             {% else %}
 
                 <div class="container">
@@ -112,8 +128,8 @@
             {% endif %}
         {% endif %}
     {% else %}
-    <div class="container">
-        <div class="card-columns mt-5">
+    <div class="container" style="margin: auto">
+        <div class="card-columns mt-5" >
         <div class="col ml-lg-5">
             <div class="card text-white bg-dark text-center" style="max-width: 18rem">
                 <div class="card-body">
