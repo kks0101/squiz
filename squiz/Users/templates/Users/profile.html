@@ -18,12 +18,12 @@
                 </tr>
               </thead>
               <tbody>
-              {% for quiz in all_quiz %}
+              {% for score in all_score %}
                 <tr>
                   <th scope="row">{{ forloop.counter }}</th>
-                  <td>{{ quiz.quiz_title }}</td>
-                  <td>{{ quiz.teacher.user.first_name }}</td>
-                  <td>{{ quiz.score.score }}</td>
+                  <td>{{ score.quiz.quiz_title }}</td>
+                  <td>{{ score.quiz.teacher.user.first_name }}</td>
+                  <td>{{ score.score }}</td>
                 </tr>
               {% endfor %}
               </tbody>
