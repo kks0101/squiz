@@ -14,8 +14,10 @@ def quiz_home(request, pk, question_no):
             next_pk = q.pk
     quiz.student.add(request.user.profile)
     if request.method == "POST":
+
         selected_option = request.POST.get('option')
-        Response.objects.create(question=question, selected_option=selected_option)
+        res = Response.objects.create(question=question, selected_option=selected_option)
+        res.student.add(request.user.profile)
         if question_no < quiz.question_set.last().pk:
             # print('/quiz/' + str(pk) + '/' + str(question_no + 1))
             return redirect('/quiz/' + str(pk) + '/' + str(next_pk))
@@ -30,7 +32,7 @@ def evaluate(request, pk):
     questions = Question.objects.filter(quiz=quiz)
     sc = 0
     for question in questions:
-        user_response = Response.objects.get(question=question)
+        user_response = request.user.profile.response_set.get(question=question)
         user_answer = str(user_response.selected_option)
         correct_answer = str(Options.objects.get(question=question, is_correct=True))
         # print("cr- " + str(correct_answer) + "  user- "+ str(user_answer))
@@ -38,7 +40,8 @@ def evaluate(request, pk):
         if user_answer == correct_answer:
             sc = sc + 1
 
-    Score.objects.create(quiz=quiz, score=sc)
+    sc = Score.objects.create(quiz=quiz, score=sc)
+    sc.student.add(request.user.profile)
 
     return render(request, 'quiz/quiz_finish.html', {'score': sc})
 
@@ -118,8 +121,9 @@ def view_response(request, username, pk):
         error_viewresponse = False
         quiz = Test.objects.get(pk=pk, student=prfl)
         question = Question.objects.filter(quiz=quiz)
+        response = Response.objects.filter(question__quiz=quiz, student=prfl)
         return render(request, 'quiz/show_response.html',
-                      {'error_viewresponse': error_viewresponse, 'questions': question})
+                      {'error_viewresponse': error_viewresponse, 'questions': question, 'responses': response})
 
 
 def view_result(request, pk):

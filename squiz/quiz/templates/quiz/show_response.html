@@ -20,13 +20,17 @@
                 <br>
                 <div class="card-text">Your answer:
 
-                {% for option in question.options_set.all %}
-                    {% if option.is_correct %}
-                        {% if question.response.selected_option ==  option.option_text %}
-                            <p class="text-success">{{ question.response.selected_option }}</p>
-                        {% else %}
-                            <p class="text-danger">{{ question.response.selected_option }}</p>
-                        {% endif %}
+                {% for response in responses %}
+                    {% if response.question.id == question.id %}
+                        {% for option in question.options_set.all %}
+                            {% if option.is_correct %}
+                                {% if response.selected_option ==  option.option_text %}
+                                    <p class="text-success">{{ response.selected_option }}</p>
+                                {% else %}
+                                    <p class="text-danger">{{ response.selected_option }}</p>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
                     {% endif %}
                 {% endfor %}
 

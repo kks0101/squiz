@@ -30,16 +30,18 @@ class Options(models.Model):
 
 
 class Score(models.Model):
-    quiz = models.OneToOneField(Test, on_delete=models.CASCADE)
+    quiz = models.ForeignKey(Test, on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
+    student = models.ManyToManyField(Profile)
 
     def __str__(self):
         return str(self.score)
 
 
 class Response(models.Model):
-    question = models.OneToOneField(Question, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
     selected_option = models.CharField(max_length=2000, null=True, blank=True)
+    student  = models.ManyToManyField(Profile)
 
     def __str__(self):
         return self.selected_option
