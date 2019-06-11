@@ -76,19 +76,23 @@ def logout_view(request):
 
 @login_required
 def profile(request):
-    student = Profile.objects.get(user = request.user)
-    all_quiz = Test.objects.filter(student=student)
-    return render(request, 'Users/profile.html', {'all_quiz': all_quiz})
+    all_score = Score.objects.filter(student=request.user.profile)
+    return render(request, 'Users/profile.html', {'all_score': all_score})
 
 
 def leaderboard(request, pk):
-    quiz = Test.objects.get(pk=pk)
-    all_students = quiz.student.all()
-    all_quiz = Test.objects.all()
-    dict = {}
-    for t in all_students:
-        q = Test.objects.get(pk=pk, student=t)
-        dict[t] = q.score
 
-    return render(request, 'Users/leaderboard.html', {'dict': dict, 'all_quiz': all_quiz, 'current_quiz': quiz})
+    all_quiz = Test.objects.all()
+    try:
+        quiz = Test.objects.get(pk=pk)
+    except Test.DoesNotExist:
+        return render(request, 'Users/leaderboard.html', {'all_quiz': all_quiz})
+    else:
+        scores = Score.objects.filter(quiz=quiz)
+        dict = {}
+        for sc in scores:
+            for student_user in sc.student.all():
+                dict[student_user] = sc
+
+        return render(request, 'Users/leaderboard.html', {'dict': dict, 'all_quiz': all_quiz, 'current_quiz': quiz})
 
