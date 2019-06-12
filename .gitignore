@@ -1,0 +1,15 @@
+###  Django ###
+.idea/
+__pycache__/
+*.xml
+*.pyc
+*.pot
+.env
+.cache
+
+db.sqlite3
+
+### Python ###
+## Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
