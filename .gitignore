@@ -8,7 +8,7 @@ migrations/
 *.pot
 .env
 .cache
-
+venv/
 db.sqlite3
 
 ### Python ###
