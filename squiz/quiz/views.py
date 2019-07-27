@@ -132,6 +132,6 @@ def view_result(request, pk):
     dict = {}
     for t in all_students:
         q = Test.objects.get(pk=pk, student=t)
-        dict[t] = q.score
+        dict[t] = t.score_set.get(quiz=q)
 
     return render(request, 'quiz/view_result.html', {'dict': dict, 'current_quiz': quiz})
